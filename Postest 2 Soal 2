@@ -1,0 +1,45 @@
+#Nama       : Syamsir
+#NIM        : 2109106090
+#Jurusan    : Informatika B'21
+
+#Membuat list kosong, Biodata mahasiswa
+nama=[]
+nim=[]
+jurusan=[]
+berat_badan=[]
+tinggi_badan=[]
+kota_asal=[]
+#membuat inputan yang dimasukkan ke dalam list
+#Saya menggunakan for in supaya bisa memasukkan lebih dari 1 biodata mahasiswa
+loop=int(input("Jumlah Data Mahasiswa : "))
+for a in range(loop):
+    print("Data Mahasiswa ke-",str(a+1))
+    #Fungsi append untuk menambahkan data ke dalam LIST
+    nama.append(str(input("Nama Lengkap : ")))
+    nim.append(int(input("Nim : ")))
+    berat_badan.append(float(input("Berat Badan (Kg): ")))
+    tinggi_badan.append(int(input("Tinggi Badan (cm): ")))
+    kota_asal.append(str(input("Berasal dari Kota : ")))
+
+#TAMPILAN OUTPUT
+
+print('''
+===========================================================================
+||                ||             || Berat || Tinggi ||                   ||
+|| Nama Mahasiswa ||     NIM     || Badan || Badan  ||     Asal Kota     ||
+||                ||             || (Kg)  || (cm)   ||                   ||
+===========================================================================''')
+for a in range(loop):
+    #Pemanggilan List
+    print("||    %s     || %i  ||" % (nama[a],nim[a]),end='')
+    #Saya pisah khusus float karena angka dibelakang komanya terlalu panjang kalau saya langsung panggil %f
+    #perintah end= fungsinya untuk menyambungkan perintah selanjutnya dengan perintah sebelumnya
+    print((" "+str(berat_badan[a])+"  "),end='')
+    print("||  %i   ||    %s      ||" % (tinggi_badan[a],kota_asal[a]))
+    #Susah buat tabelnya bang wkwkwkw
+    #bentuk tabelnya kacau kalau nama mahasiswa 1 dan nama mahasiswa 2 jumlah hurufnya beda
+    #saya gatau gimana caranya supaya inputannya merge(Inputannya di tengah dan meyesuaikan sesuai tabel)
+    #Mohon bantuannya bang kalau tau solusinya gimana wkwkwk 
+    print("===========================================================================")
+
+#TERIMA KASIH#
