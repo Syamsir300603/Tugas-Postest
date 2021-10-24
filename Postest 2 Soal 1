@@ -1,0 +1,58 @@
+# Nama      : Syamsir
+# NIM       : 2109106090
+# Jurusan   : Informatika B'2021
+
+# Program Membuat Konversi Mata Uang IDR
+
+# Membuat Perulangan
+loop = True
+while (loop == True):
+#Membuat Menu Pilihan
+    print (5*"="+"Konversi Mata Uang yang Tersedia"+5*"=")
+    print("1. IDR - USD")
+    print("2. IDR - SGD")
+    print("3. IDR - EUR")
+    print("4. IDR - JPY")
+    Konversi_Uang = int(input("\nPilih Konversi : "))
+# Variable Mata uang
+    usd = 0.000070
+    sgd = 0.000095
+    eur = 0.000060
+    jpy = 0.0080
+#Percabangan atau Kondisi
+# Konversi IDR - USD
+    if Konversi_Uang == 1:
+        print("\n",5*"="+"IDR - USD"+5*"=")
+        idr = float(input("\nMasukkan Nilai IDR = "))
+        print(idr , "IDR =",idr*usd , "USD")
+# Konversi IDR - SGD
+    elif Konversi_Uang == 2:
+        print("\n",5*"="+"IDR - SGD"+5*"=")
+        idr = float(input("\nMasukkan Nilai IDR = "))
+        print(idr , "IDR =",idr*sgd , "SGD")
+# Konversi IDR - EUR
+    elif Konversi_Uang == 3:
+        print("\n",5*"="+"IDR - EUR"+5*"=")
+        idr = float(input("\nMasukkan Nilai IDR = "))
+        print(idr , "IDR =",idr*eur , "EUR")
+# Konversi IDR - JPY
+    elif Konversi_Uang == 4:
+        print("\n",5*"="+"IDR - JPY"+5*"=")
+        idr = float(input("\nMasukkan Nilai IDR = "))
+        print(idr , "IDR =",idr*jpy , "JPY")
+# Jika Inputan Konversi salah
+    else:
+        print("\n",5*"="+"Pilihan Tidak Tersedia"+5*"=")
+    salah = True
+    while (salah == True):
+        a = input("Apakah anda ingin kembali ke menu? yes/no : ")
+        if (a == "no"):
+            loop = False
+            salah = False
+            print(5*"="+"Terima Kasih Telah Menggunakan Porgram Kami"+5*"=")
+        elif (a == "yes"):
+            loop = True
+            salah = False
+        else:
+            print(5*"="+"Anda Salah Memasukkan Pilihan yes/no"+5*"=")
+            salah = True
