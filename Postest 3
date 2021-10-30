@@ -1,0 +1,165 @@
+#Nama   :Syamsir
+#NIM    :2109106090
+#Tugas  :Postest 3
+
+#Menu Hari Senin-Sabtu
+def menu_harian():
+    print(38*"=")
+    print("||"+12*"="+"Syam Store"+12*"="+"||")
+    print("||"+34*"="+"||")
+    print("||===========Harga Barang===========||")
+    print("||1. Buku Tulis  Rp. 30.000/pack    ||")
+    print("||2. Buku Gambar Rp. 8.500/buku     ||")
+    print("||3. Pensil      Rp. 4.000/pensil   ||")
+    print("||4. Penghapus   Rp. 3.000/penghapus||")
+    print("||5. Pulpen      Rp. 3.500/pulpen   ||")
+    print("||6. Tipe-X      Rp. 5.000/tipe-x   ||")
+    print("||"+34*"="+"||")
+    print(38*"=")
+
+
+#Menu Hari Minggu
+def menu_minggu():
+    print(113*"=")
+    print("||"+25*">>"+"Syam Store"+"<"+24*"<<"+"||")
+    print("||"+109*"="+"||")
+    print("||===========Harga Barang===========||"+27*"="+"SPESIAL MINGGU-DAY"+28*"="+"||")
+    print("||1. Buku Tulis  Rp. 30.000/pack    ||"+18*"="+"7. Paket Mini : Buku Tulis dan Pulpen"+18*"="+"||")
+    print("||2. Buku Gambar Rp. 8.500/buku     ||"+26*"="+"PAKET MINI DISKON 5%"+27*"="+"||")
+    print("||3. Pensil      Rp. 4.000/pensil   ||"+14*"="+"8. Paket Jumbo: Buku Tulis, Pulpen dan Tipe X"+14*"="+"||")
+    print("||4. Penghapus   Rp. 3.000/penghapus||"+25*"="+"PAKET JUMBO DISKON 10%"+26*"="+"||")
+    print("||5. Pulpen      Rp. 3.500/pulpen   ||"+"9. Paket Extra: Buku Tulis,Pulpen,Tipe-x,Buku Gambar,Pensil dan Penghapus||")
+    print("||6. Tipe-X      Rp. 5.000/tipe-x   ||"+25*"="+"PAKET EXTRA DISKON 25%"+26*"="+"||")
+    print("||"+34*"="+"||"+73*"="+"||")
+    print(113*"=")
+
+#Fungsi Percabangan dan perulangan untuk hari minggu
+def pilihan_minggu():
+    list_harga=[]
+    list_barang=[]
+    loop=int(input("Berapa Banyak Jenis Barang yang akan anda Pesan? : "))
+    for i in range(loop):
+        print(3*">"+"Jenis Barang",str(i+1))
+        x=int(input(3*">"+"Masukkan Pilihan Barang : "))
+        y=(int(input(3*">"+"Berapa banyak anda ingin membeli : ")))
+        if x==1:
+            list_barang.insert(i,"Buku Tulis")
+            harga=y*30000
+            list_harga.insert(i,harga)
+        elif x==2:
+            list_barang.insert(i,"Buku Gambar")
+            harga=y*8500
+            list_harga.insert(i,harga)
+        elif x==3:
+            list_barang.insert(i,"Pensil")
+            harga=y*4000
+            list_harga.insert(i,harga)
+        elif x==4:
+            list_barang.insert(i,"Penghapus")
+            harga=y*3000
+            list_harga.insert(i,harga)
+        elif x==5:
+            list_barang.insert(i,"Pulpen")
+            harga=y*3500
+            list_harga.insert(i,harga)
+        elif x==6:
+            list_barang.insert(i,"Tipe-X")
+            harga=y*5000
+            list_harga.insert(i,harga)
+        elif x==7:
+            list_barang.insert(i,"Paket Mini")
+            diskon=(y*(30000+3500))*(5/100)
+            harga=(30000+3500)-diskon
+            list_harga.insert(i,harga)
+        elif x==8:
+            list_barang.insert(i,"Paket Jumbo")
+            diskon=(y*(30000+3500+5000))*(10/100)
+            harga=(30000+3500+5000)-diskon
+            list_harga.insert(i,harga)
+        elif x==9:
+            list_barang.insert(i,"Paket Extra")
+            diskon=(y*(30000+3500+5000+8500+4000+3000))*(25/100)
+            harga=(30000+3500+5000+8500+4000+3000)-diskon
+            list_harga.insert(i,harga)
+    print(3*">"+"Total Pesanan Belanja anda adalah : Rp.",sum(list_harga))
+    print(3*">"+"Rincian Pesanan anda :")
+    for i in range(loop):
+        print(3*">"+str(i+1)+"."+list_barang[i]+" seharga "+"Rp."+str(list_harga[i]))
+
+#Fungsi Percabangan dan Perulangan hari senin-sabtu
+def pilihan_senin_sabtu():
+    list_harga=[]
+    list_barang=[]
+    loop=int(input("Berapa Banyak Jenis Barang yang akan anda Pesan? : "))
+    for i in range(loop):
+        print(3*">"+"Jenis Barang",str(i+1))
+        x=int(input(3*">"+"Masukkan Pilihan Barang : "))
+        y=(int(input(3*">"+"Berapa banyak anda ingin membeli : ")))
+        if x==1:
+            list_barang.insert(i,"Buku Tulis")
+            harga=y*30000
+            list_harga.insert(i,harga)
+        elif x==2:
+            list_barang.insert(i,"Buku Gambar")
+            harga=y*8500
+            list_harga.insert(i,harga)
+        elif x==3:
+            list_barang.insert(i,"Pensil")
+            harga=y*4000
+            list_harga.insert(i,harga)
+        elif x==4:
+            list_barang.insert(i,"Penghapus")
+            harga=y*3000
+            list_harga.insert(i,harga)
+        elif x==5:
+            list_barang.insert(i,"Pulpen")
+            harga=y*3500
+            list_harga.insert(i,harga)
+        elif x==6:
+            list_barang.insert(i,"Tipe-X")
+            harga=y*5000
+            list_harga.insert(i,harga)
+    print(3*">"+"Total Pesanan Belanja anda adalah : Rp.",sum(list_harga))
+    print(3*">"+"Rincian Pesanan anda :")
+    for i in range(loop):
+        print(3*">"+str(i+1)+"."+list_barang[i]+" seharga "+"Rp."+str(list_harga[i]))
+
+def Program():
+    z=True
+    while z==True:
+        print("1. Hari Senin-Sabtu\n2. Hari Minggu")
+        Hari=int(input("Pilih Hari : "))
+        if Hari==1:
+            menu_harian()
+            pilihan_senin_sabtu()
+            print(5*">"+"Silahkan lakukan pembayaran"+5*"<")
+            kembali =True
+            while kembali==True:
+                lagi=input("Apakah anda ingin memesan lagi? y/n : ")
+                if lagi=="y":
+                    kembali=False
+                    z=True
+                elif lagi=="n":
+                    kembali=False
+                    z=False
+                    print(10*"="+"TERIMA KASIH TELAH BERBELANJA DI SYAM STORE"+10*"=")
+                else:
+                    print(5*"="+"Anda salah memasukkan pilihan y/n"+5*"=")
+        elif Hari==2:
+            menu_minggu()
+            pilihan_minggu()
+            print(5*">"+"Silahkan lakukan pembayaran"+5*"<")
+            kembali =True
+            while kembali==True:
+                lagi=input("Apakah anda ingin memesan lagi? y/n : ")
+                if lagi=="y":
+                    kembali=False
+                    z=True
+                elif lagi=="n":
+                    kembali=False
+                    z=False
+                    print(10*"="+"TERIMA KASIH TELAH BERBELANJA DI SYAM STORE"+10*"=")
+                else:
+                    print(5*"="+"Anda salah memasukkan pilihan y/n"+5*"=")
+
+Program()
