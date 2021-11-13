@@ -1,0 +1,350 @@
+#Nama   :Syamsir
+#NIM    :2109106090
+#Tugas  :Postest 4
+
+#Menu Login
+
+
+def login_Admin():
+    print(5*"="+"ADMIN"+5*"=")
+    while True:
+        usr=input(">>>>>Username : ")
+        password=input(">>>>>Password : ")
+        if usr=="Syamsir" and password=="090":
+            print(">>>>>Selamat Datang", usr+"<<<<<")
+            break
+        elif usr=="Syamsir" and password!="090":
+            print("Password Salah!!!")
+        elif usr!="Syamsir" and password =="090":
+            print("Username Salah!!!")
+        else:
+            print("Username dan Password Salah!!!")
+
+def login_User():
+    print(5*"="+"USER"+5*"=")
+    while True:
+        usr=input(">>>>>Username : ")
+        password=input(">>>>>Password : ")
+        if usr=="Syamsir" and password=="210":
+            print(">>Selamat Datang", usr+"<<")
+            break
+        elif usr=="Syamsir" and password!="210":
+            print("Password Salah!!!")
+        elif usr!="Syamsir" and password =="210":
+            print("Username Salah!!!")
+        else:
+            print("Username dan Password Salah!!!")
+
+#Menu Admin : Lihat Barang, Tambahi Barang baru, Ganti Barang dengan barang baru
+
+def menu_admin():
+    print(31*"=")
+    print("|"+9*"="+"Menu Admin"+10*"="+"|")
+    print("|[1]. Tampilkan Stok Barang   |")
+    print("|[2]. Tambah Stok Barang      |")
+    print("|[3]. Tambah Jenis Barang Baru|")
+    print("|[4]. Kurangi Stok Barang     |")
+    print("|[5]. Ganti Jenis Barang      |")
+    print("|[6]. Perbarui Stok Barang    |")
+    print(31*"=")
+
+#Menu Admin
+#Membuat Menu User Menjadi FOR IN
+#Membuat Menu EXIT dengan cara ketika logout maka user/admin kembali ke menu login
+#
+kamus={ "atk":["BUKU TULIS","BUKU GAMBAR","PENSIL","PULPEN","PENGHAPUS","TIPE-X"],
+        "tambah_atk" : [],
+        "harga" : [5000,7000,4000,3000,3000,5500],
+        "tambah_user_atk": [],
+        }
+tambah_harga={}
+def tampilkan():
+    print(32*"=")
+    print(11*"="+"Menu Admin"+11*"=")
+    print("| NAMA BARANG |STOK|   HARGA   |")
+    z=len(kamus["atk"])
+    for x in range(z):
+        print("|"+str(x+1)+"."+kamus["atk"][x]+(11-len(kamus["atk"][x]))*" "+"|"+str(kamus["tambah_atk"].count(kamus["atk"][x]))+(4-len(str(kamus["tambah_atk"].count(kamus["atk"][x]))))*" "+"|"+"Rp."+str(kamus["harga"][x])+(8-(len(str(kamus["harga"][x]))))*" "+"|")
+    print(32*"=")
+
+def tambah_barang_baru():
+    print(">>>Tambah Jenis Barang Baru<<<")
+    x=input("Nama Barang Baru(Huruf Kapital) : ")
+    z=int(input("Harga Jual per satuan : Rp. "))
+    y=input("Jumlah Stok : ")
+    kamus["atk"].append(x)
+    kamus["harga"].append(z)
+    print("Stok Barang Baru ("+x+") telah ditambahkan sebanyak "+y)
+    for i in range(int(y)):
+        kamus["tambah_atk"].append(x)
+
+def tambah_stok_barang():
+    tampilkan()
+    print(">>>Tambah Stok Barang<<<")
+    x=input("Nama Barang(Huruf Kapital): ")
+    y=input("Stok Tambahan : ")
+    print("Stok "+x+" Sebanyak "+y+" telah ditambahkan")
+    for i in range(int(y)):
+        kamus["tambah_atk"].append(x)   
+
+def kurangi_stok():
+    print(">>>Hapus Stok Barang<<<")
+    x=input("Nama Barang(Huruf Kapital) : ")
+    y=input("Jumlah Stok yang dikurangi : ")
+    for i in range(int(y)):
+        kamus["tambah_atk"].remove(x)
+    print("Stok "+x+" telah di kurangi sebanyak "+y)
+
+def ganti_jenis_barang():
+    print(">>>Mengganti Jenis Barang<<<")
+    x=input("Nama Barang yang di ganti(Huruf Kapital) : ")
+    z=input("Nama Barang Pengganti : ")
+    a=int(input("Harga Jual per satuan : Rp. "))
+    y=kamus["tambah_atk"].count(x)
+    k=len(kamus["atk"])
+    for p in range(k):
+        k-=1
+        if (kamus["atk"][k])==x:
+            (kamus["harga"][k])=a
+            kamus["atk"][k]=z
+            print("Barang "+x+" telah diganti dengan Barang "+z+" dengan harga jual Rp.",a)
+    for i in range(y):
+        kamus["tambah_atk"][i]=z
+def perbarui_stok():
+    print(">>>Perbarui Stok<<<")
+    x=input("Nama Barang(Huruf Kapital) : ")
+    y=input("Jumlah Stok Baru : ")
+    k=len(kamus["tambah_atk"])
+    for i in range(k):
+        kamus["tambah_atk"].remove(x)
+    for a in range(int(y)):
+        kamus["tambah_atk"].append(x)
+    print("Stok "+x+" Telah di perbarui menjadi "+y)
+
+def fungsi_admin():
+    lagikah=True
+    while lagikah:
+        menu_admin()
+        menu=input(">>>Masukkan Pilihan Menu : ")
+        if menu=="1":
+            tampilkan()
+            while True:
+                x=input(">>>Apakah anda ingin kembali ke menu y/t : ")
+                if x=="y":
+                    input("===Tekan Enter Untuk Kembali Ke Menu===")
+                    break
+                elif x=="t":
+                    lagikah=False
+                    break
+                else:
+                    print("Anda Salah Memasukkan Pilihan")
+        elif menu=="2":
+            tambah_stok_barang()
+            while True:
+                x=input(">>>Apakah anda ingin kembali ke menu y/t : ")
+                if x=="y":
+                    input("===Tekan Enter Untuk Kembali Ke Menu===")
+                    break
+                elif x=="t":
+                    lagikah=False
+                    break
+                else:
+                    print("Anda Salah Memasukkan Pilihan")
+        elif menu=="3":
+            tambah_barang_baru()
+            while True:
+                x=input(">>>Apakah anda ingin kembali ke menu y/t : ")
+                if x=="y":
+                    input("===Tekan Enter Untuk Kembali Ke Menu===")
+                    break
+                elif x=="t":
+                    lagikah=False
+                    break
+                else:
+                    print("Anda Salah Memasukkan Pilihan")
+        elif menu=="4":
+            kurangi_stok()
+            while True:
+                x=input(">>>Apakah anda ingin kembali ke menu y/t : ")
+                if x=="y":
+                    input("===Tekan Enter Untuk Kembali Ke Menu===")
+                    break
+                elif x=="t":
+                    lagikah=False
+                    break
+                else:
+                    print("Anda Salah Memasukkan Pilihan")
+        elif menu=="5":
+            ganti_jenis_barang()
+            while True:
+                x=input(">>>Apakah anda ingin kembali ke menu y/t : ")
+                if x=="y":
+                    input("===Tekan Enter Untuk Kembali Ke Menu===")
+                    break
+                elif x=="t":
+                    lagikah=False
+                    break
+                else:
+                    print("Anda Salah Memasukkan Pilihan")
+        elif menu=="6":
+            perbarui_stok()
+            while True:
+                x=input(">>>Apakah anda ingin kembali ke menu y/t : ")
+                if x=="y":
+                    input("===Tekan Enter Untuk Kembali Ke Menu===")
+                    break
+                elif x=="t":
+                    lagikah=False
+                    break
+                else:
+                    print("Anda Salah Memasukkan Pilihan")
+        else:
+            print("Menu Tidak Tersedia")
+            input("Tekan ENTER untuk kembali ke menu awal")
+
+
+#Menu User
+def menu_pilihan():
+    print(76*"=")
+    print(33*"="+"Menu User"+34*"=")
+    print("| NAMA BARANG |STOK|   HARGA   |                  Promo!                   |")
+    z=len(kamus["atk"])
+    for x in range(z):
+        print("|"+str(x+1)+"."+kamus["atk"][x]+(11-len(kamus["atk"][x]))*" "+"|"+str(kamus["tambah_atk"].count(kamus["atk"][x])),end="")
+        print((4-len(str(kamus["tambah_atk"].count(kamus["atk"][x]))))*" "+"|"+"Rp."+str(kamus["harga"][x])+(8-(len(str(kamus["harga"][x]))))*" "+"|",end="")
+        print("Diskon "+str(10*(x+1))+"% "+"untuk total pembelian Rp."+str(50000*(x+1))+(7-len(str(50000*(x+1))))*" "+"|")
+    print(76*"=")
+
+def pesan():
+    pesan_lagi=True
+    while pesan_lagi:
+        x=input(">>>Silahkan Pesan Sesuai dengan Nomor yang Tersedia : ")
+        if x=="1":
+            a=int(input(">>>Berapa Banyak yang akan anda pesan : "))
+            k=a*kamus["harga"][0]
+            tambah_harga.update({"Buku Tulis" : k})
+            for i in range(a):
+                kamus["tambah_user_atk"].append("BUKU TULIS")
+        elif x=="2":
+            a=int(input(">>>Berapa Banyak yang akan anda pesan : "))
+            k=a*kamus["harga"][1]
+            tambah_harga.update({"Buku Gambar" : k})
+            for i in range(a):
+                kamus["tambah_user_atk"].append("BUKU GAMBAR")
+        elif x=="3":
+            a=int(input(">>>Berapa Banyak yang akan anda pesan : "))
+            k=a*kamus["harga"][2]
+            tambah_harga.update({"Pensil" : k})
+            for i in range(a):
+                kamus["tambah_user_atk"].append("PENSIL")
+        elif x=="4":
+            a=int(input(">>>Berapa Banyak yang akan anda pesan : "))
+            k=a*kamus["harga"][3]
+            tambah_harga.update({"Pulpen" : k})
+            for i in range(a):
+                kamus["tambah_user_atk"].append("PULPEN")
+        elif x=="5":
+            a=int(input(">>>Berapa Banyak yang akan anda pesan : "))
+            k=a*kamus["harga"][4]
+            tambah_harga.update({"Penghapus" : k})
+            for i in range(a):
+                kamus["tambah_user_atk"].append("PENGHAPUS")
+        elif x=="6":
+            a=int(input(">>>Berapa Banyak yang akan anda pesan : "))
+            k=a*kamus["harga"][5]
+            tambah_harga.update({"Tipe-X" : k})
+            for i in range(a):
+                kamus["tambah_user_atk"].append("TIPE-X")
+        lagi=True
+        while lagi:
+            z=input("apakah anda ingin memesan lagi? y/t : ")
+            if z=="y":
+                lagi=False
+            elif z=="t":
+                lagi=False
+                pesan_lagi=False
+            else:
+                "Anda salah memasukkan pilihan"
+def tampilkan_pesanan():
+    z=len(kamus["atk"])
+    print("|   BARANG    |PESANAN|")
+    for i in range(z):
+        print("|"+str(i+1)+"."+kamus["atk"][i]+(11-len(kamus["atk"][i]))*" "+"|"+str(kamus["tambah_user_atk"].count(kamus["atk"][i]))+"|")
+    a=sum(tambah_harga.values())
+    print("TOTAL BELANJA ANDA = Rp.",a)
+    if a<50000:
+        print("Anda Tidak Mendapatkan Diskon")
+    elif 50000<=a<100000:
+        print("Anda mendapatkan Diskon sebesar 5%")
+        print("Sehingga Total Belanja anda menjadi Rp.",a-(a*(5/100)))
+    elif 100000<=a<150000:
+        print("Anda mendapatkan Diskon sebesar 10%")
+        print("Sehingga Total Belanja anda menjadi Rp.",a-(a*(10/100)))
+    elif 150000<=a<200000:
+        print("Anda mendapatkan Diskon sebesar 15%")
+        print("Sehingga Total Belanja anda menjadi Rp.",a-(a*(15/100)))
+    elif 200000<=a<250000:
+        print("Anda mendapatkan Diskon sebesar 20%")
+        print("Sehingga Total Belanja anda menjadi Rp.",a-(a*(20/100)))
+    elif 250000<=a<300000:
+        print("Anda mendapatkan Diskon sebesar 25%")
+        print("Sehingga Total Belanja anda menjadi Rp.",a-(a*(25/100)))
+    else:
+        print("Anda mendapatkan Diskon sebesar 30%")
+        print("Sehingga Total Belanja anda menjadi Rp.",a-(a*(30/100)))
+    print(">>>SILAHKAN LAKUKAN PEMBAYARAN<<<")
+
+def login():
+    print("=========MENU LOGIN=========")
+    print("=========1. Admin===========")
+    print("=========2. User============")
+    print("=========3. Exit============")
+
+def program():
+    while True:
+        login()
+        pilih_menu=input(">>>Pilih Menu Yang Tersedia : ")
+        if pilih_menu=="1":
+            login_Admin()
+            saya=True
+            while saya:
+                fungsi_admin()
+                capek=True
+                while capek:
+                    login_lagi=input("Apakah Anda Ingin Logout y/t : ")
+                    if login_lagi=="y":
+                        capek=False
+                        saya=False
+                    elif login_lagi=="t":
+                        print(">>>Anda Kembali Ke Menu User<<<")
+                        capek=False
+                        saya=True
+                    else:
+                        print("PILIHAN TIDAK TERSEDIA y/t")
+        elif pilih_menu=="2":
+            login_User()
+            saya=True
+            while saya:
+                menu_pilihan()
+                pesan()
+                tampilkan_pesanan()
+                capek=True
+                while capek:
+                    login_lagi=input("Apakah Anda Ingin Logout y/t : ")
+                    if login_lagi=="y":
+                        capek=False
+                        saya=False
+                    elif login_lagi=="t":
+                        print(">>>Anda Kembali Ke Menu User<<<")
+                        capek=False
+                        saya=True
+                    else:
+                        print("PILIHAN TIDAK TERSEDIA y/t")
+        elif pilih_menu=="3":
+            print("=====ANDA TELAH KELUAR DARI PROGRAM KAMI=====")
+            break
+        else:
+            print("=====PILIHAN TIDAK TERSEDIA=====")
+            input("===TEKAN ENTER UNTUK KEMBALI KE MENU LOGIN===")
+
+program()
